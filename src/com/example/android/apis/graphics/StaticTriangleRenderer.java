@@ -40,15 +40,13 @@ import com.example.android.apis.R;
 
 /**
  * A GLSurfaceView.Renderer that uses the Android-specific
- * android.opengl.GLESXXX static OpenGL ES APIs. The static APIs
- * expose more of the OpenGL ES features than the
- * javax.microedition.khronos.opengles APIs, and also
- * provide a programming model that is closer to the C OpenGL ES APIs, which
- * may make it easier to reuse code and documentation written for the
- * C OpenGL ES APIs.
- *
+ * android.opengl.GLESXXX static OpenGL ES APIs. The static APIs expose more of
+ * the OpenGL ES features than the javax.microedition.khronos.opengles APIs, and
+ * also provide a programming model that is closer to the C OpenGL ES APIs,
+ * which may make it easier to reuse code and documentation written for the C
+ * OpenGL ES APIs.
  */
-public class StaticTriangleRenderer implements GLSurfaceView.Renderer{
+public class StaticTriangleRenderer implements GLSurfaceView.Renderer {
 
     public interface TextureLoader {
         /**
@@ -73,15 +71,15 @@ public class StaticTriangleRenderer implements GLSurfaceView.Renderer{
 
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         /*
-         * By default, OpenGL enables features that improve quality
-         * but reduce performance. One might want to tweak that
-         * especially on software renderer.
+         * By default, OpenGL enables features that improve quality but reduce
+         * performance. One might want to tweak that especially on software
+         * renderer.
          */
         glDisable(GL_DITHER);
 
         /*
-         * Some one-time OpenGL initialization can be made here
-         * probably based on features of this particular context
+         * Some one-time OpenGL initialization can be made here probably based
+         * on features of this particular context
          */
         glHint(GL_PERSPECTIVE_CORRECTION_HINT,
                 GL_FASTEST);
@@ -92,8 +90,8 @@ public class StaticTriangleRenderer implements GLSurfaceView.Renderer{
         glEnable(GL_TEXTURE_2D);
 
         /*
-         * Create our texture. This has to be done each time the
-         * surface is created.
+         * Create our texture. This has to be done each time the surface is
+         * created.
          */
 
         int[] textures = new int[1];
@@ -102,37 +100,29 @@ public class StaticTriangleRenderer implements GLSurfaceView.Renderer{
         mTextureID = textures[0];
         glBindTexture(GL_TEXTURE_2D, mTextureID);
 
-        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                GL_NEAREST);
-        glTexParameterf(GL_TEXTURE_2D,
-                GL_TEXTURE_MAG_FILTER,
-                GL_LINEAR);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
-                GL_CLAMP_TO_EDGE);
-        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
-                GL_CLAMP_TO_EDGE);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
-        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,
-                GL_REPLACE);
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
         mTextureLoader.load(gl);
     }
 
     public void onDrawFrame(GL10 gl) {
         /*
-         * By default, OpenGL enables features that improve quality
-         * but reduce performance. One might want to tweak that
-         * especially on software renderer.
+         * By default, OpenGL enables features that improve quality but reduce
+         * performance. One might want to tweak that especially on software
+         * renderer.
          */
         glDisable(GL_DITHER);
 
-        glTexEnvx(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,
-                GL_MODULATE);
+        glTexEnvx(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
         /*
-         * Usually, the first thing one might want to do is to clear
-         * the screen. The most efficient way of doing this is to use
-         * glClear().
+         * Usually, the first thing one might want to do is to clear the screen.
+         * The most efficient way of doing this is to use glClear().
          */
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -151,10 +141,8 @@ public class StaticTriangleRenderer implements GLSurfaceView.Renderer{
 
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, mTextureID);
-        glTexParameterx(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
-                GL_REPEAT);
-        glTexParameterx(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
-                GL_REPEAT);
+        glTexParameterx(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameterx(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
         long time = SystemClock.uptimeMillis() % 4000L;
         float angle = 0.090f * ((int) time);
@@ -168,10 +156,10 @@ public class StaticTriangleRenderer implements GLSurfaceView.Renderer{
         glViewport(0, 0, w, h);
 
         /*
-        * Set our projection matrix. This doesn't have to be done
-        * each time we draw, but usually a new projection needs to
-        * be set when the viewport is resized.
-        */
+         * Set our projection matrix. This doesn't have to be done each time we
+         * draw, but usually a new projection needs to be set when the viewport
+         * is resized.
+         */
 
         float ratio = (float) w / h;
         glMatrixMode(GL_PROJECTION);
@@ -231,23 +219,23 @@ public class StaticTriangleRenderer implements GLSurfaceView.Renderer{
             float[] coords = {
                     // X, Y, Z
                     -0.5f, -0.25f, 0,
-                     0.5f, -0.25f, 0,
-                     0.0f,  0.559016994f, 0
+                    0.5f, -0.25f, 0,
+                    0.0f, 0.559016994f, 0
             };
 
             for (int i = 0; i < VERTS; i++) {
-                for(int j = 0; j < 3; j++) {
-                    mFVertexBuffer.put(coords[i*3+j] * 2.0f);
+                for (int j = 0; j < 3; j++) {
+                    mFVertexBuffer.put(coords[i * 3 + j] * 2.0f);
                 }
             }
 
             for (int i = 0; i < VERTS; i++) {
-                for(int j = 0; j < 2; j++) {
-                    mTexBuffer.put(coords[i*3+j] * 2.0f + 0.5f);
+                for (int j = 0; j < 2; j++) {
+                    mTexBuffer.put(coords[i * 3 + j] * 2.0f + 0.5f);
                 }
             }
 
-            for(int i = 0; i < VERTS; i++) {
+            for (int i = 0; i < VERTS; i++) {
                 mIndexBuffer.put((short) i);
             }
 
@@ -261,8 +249,7 @@ public class StaticTriangleRenderer implements GLSurfaceView.Renderer{
             glVertexPointer(3, GL_FLOAT, 0, mFVertexBuffer);
             glEnable(GL_TEXTURE_2D);
             glTexCoordPointer(2, GL_FLOAT, 0, mTexBuffer);
-            glDrawElements(GL_TRIANGLE_STRIP, VERTS,
-                    GL_UNSIGNED_SHORT, mIndexBuffer);
+            glDrawElements(GL_TRIANGLE_STRIP, VERTS, GL_UNSIGNED_SHORT, mIndexBuffer);
         }
 
         private final static int VERTS = 3;
