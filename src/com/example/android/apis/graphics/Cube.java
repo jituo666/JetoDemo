@@ -88,10 +88,15 @@ class Cube
 
     public void draw(GL10 gl)
     {
+        //gl.glFrontFace(GL10.GL_CCW);
         gl.glFrontFace(GL10.GL_CW);
+        //gl.glNormalPointer(type, stride, pointer) // 法线向量
         gl.glVertexPointer(3, GL10.GL_FIXED, 0, mVertexBuffer);
         gl.glColorPointer(4, GL10.GL_FIXED, 0, mColorBuffer);
-        gl.glDrawElements(GL10.GL_TRIANGLES, 36, GL10.GL_UNSIGNED_BYTE, mIndexBuffer);
+        gl.glDrawElements(GL10.GL_TRIANGLES, 36, GL10.GL_UNSIGNED_BYTE, mIndexBuffer); //glDrawArrays \glNormal\ glArrayElement
+        /**
+         * GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_QUAD_STRIP, GL_QUADS, and GL_POLYGON
+         */
     }
 
     private IntBuffer   mVertexBuffer;

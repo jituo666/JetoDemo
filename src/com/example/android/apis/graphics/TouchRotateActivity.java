@@ -163,7 +163,6 @@ class TouchSurfaceView extends GLSurfaceView {
              gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT,
                      GL10.GL_FASTEST);
 
-
              gl.glClearColor(1,1,1,1);
              gl.glEnable(GL10.GL_CULL_FACE);
              gl.glShadeModel(GL10.GL_SMOOTH);

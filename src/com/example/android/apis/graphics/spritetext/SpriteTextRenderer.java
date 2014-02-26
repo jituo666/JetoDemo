@@ -189,16 +189,16 @@ public class SpriteTextRenderer implements GLSurfaceView.Renderer{
 
         mTriangle.draw(gl);
 
-        mProjector.getCurrentModelView(gl);
-        mLabels.beginDrawing(gl, mWidth, mHeight);
-        drawLabel(gl, 0, mLabelA);
-        drawLabel(gl, 1, mLabelB);
-        drawLabel(gl, 2, mLabelC);
-        float msPFX = mWidth - mLabels.getWidth(mLabelMsPF) - 1;
-        mLabels.draw(gl, msPFX, 0, mLabelMsPF);
-        mLabels.endDrawing(gl);
-
-        drawMsPF(gl, msPFX);
+//        mProjector.getCurrentModelView(gl);
+//        mLabels.beginDrawing(gl, mWidth, mHeight);
+//        drawLabel(gl, 0, mLabelA);
+//        drawLabel(gl, 1, mLabelB);
+//        drawLabel(gl, 2, mLabelC);
+//        float msPFX = mWidth - mLabels.getWidth(mLabelMsPF) - 1;
+//        mLabels.draw(gl, msPFX, 0, mLabelMsPF);
+//        mLabels.endDrawing(gl);
+//
+//        drawMsPF(gl, msPFX);
     }
 
     private void drawMsPF(GL10 gl, float rightMargin) {
@@ -327,8 +327,7 @@ class Triangle {
         gl.glVertexPointer(3, GL10.GL_FLOAT, 0, mFVertexBuffer);
         gl.glEnable(GL10.GL_TEXTURE_2D);
         gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, mTexBuffer);
-        gl.glDrawElements(GL10.GL_TRIANGLE_STRIP, VERTS,
-                GL10.GL_UNSIGNED_SHORT, mIndexBuffer);
+        gl.glDrawElements(GL10.GL_TRIANGLE_STRIP, VERTS, GL10.GL_UNSIGNED_SHORT, mIndexBuffer);
     }
 
     public float getX(int vertex) {
